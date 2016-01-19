@@ -20,4 +20,4 @@ apt-get install lxd
 
 	lxc launch images:ubuntu/trusty/i386 ubuntu-32
 
-
+https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
