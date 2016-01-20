@@ -1,0 +1,21 @@
+# Urgen S.
+# This file is from LXD Host server
+# The loopback network interface
+# eth1 is local and eth0 is WAN 
+# eth0 is bridged to br0 to talk to container and internet access
+auto lo
+iface lo inet loopback
+
+auto eth0 eth1
+iface eth0 inet manual
+iface eth1 inet dhcp
+
+auto br0
+iface br0 inet static
+    address 10.0.3.123
+    netmask 255.255.255.0
+    gateway 10.0.3.2 
+    bridge_ports eth0
+    bridge_stp off
+    bridge_fd 0
+    bridge_maxwait 0
