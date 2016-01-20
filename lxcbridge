@@ -1,0 +1,16 @@
+    vim /etc/lxc/default.conf 
+
+        lxc.network.type = veth
+        #lxc.network.link = lxcbr0   #change the "lxcbr0" to "br0"
+        lxc.network.link = br0
+        lxc.network.flags = up
+        lxc.network.hwaddr = 00:16:3e:xx:xx:xx
+
+
+#LXD doesnt use the file default.conf so you also need to edit lxd default profile with below command and change it to br0
+
+        lxc profile show default ##shows default config 
+
+        lxc profile edit default
+
+# reference https://insights.ubuntu.com/2015/11/10/converting-eth0-to-br0-and-getting-all-your-lxc-or-lxd-onto-your-lan/
