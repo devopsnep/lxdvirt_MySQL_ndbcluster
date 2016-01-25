@@ -1,17 +1,58 @@
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
+# br0(eth0) -- connected to internet/WAN
+# br1(eth1) -- connected to private network(communication between containers)
 
-# The loopback network interface
+ip route add 192.168.48.0/24 dev br1
+
+# vim /etc/network/interface
 auto lo
 iface lo inet loopback
 
 # The primary network interface
 auto eth0
-iface eth0 inet dhcp
+iface eth0 inet manual
+auto br0 
+iface br0 inet static
+  address 192.168.230.131
+  network 192.168.230.0
+  netmask 255.255.255.0
+  broadcast 192.168.230.255
+  gateway 192.168.230.2
+  bridge_ports eth0
+  bridge_stp off
+  bridge_fd 0
+  bridge_maxwait 0
+  post-up ip link set br0 address 00:0c:29:43:f6:5c
 
-auto eth1
-iface eth1 inet static
-   address 192.168.101.88
-   netmask 255.255.255.0
-   gateway 192.168.101.2
-   dns-nameservers 8.8.8.8
+auth eth1
+iface eth1 inet manual
+
+auto br1
+iface br1 inet static
+        address 192.168.48.129
+        netmask 255.255.255.0
+        bridge_ports eth1
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+       # ip route add 192.168.48.0/24 via 192.168.48.1 || true
+        up route add -net 192.168.48.0/24 gw 192.168.48.1 dev br1
+
+
+root@s1:~# cat /etc/lxc/default.conf 
+
+lxc.network.type = veth
+lxc.network.link = br0
+lxc.network.flags = up
+lxc.network.hwaddr = 00:16:3e:xx:xx:xx
+       
+LXD is a layer on top of LXC, it doesn’t use /etc/lxc/default.conf for its default config, but instead uses its own settings. 
+These are editable with lxc profile edit default. Change the lxcbr0 in your editor and save and exit. 
+You can check that it is correct by using lxc profile show default.
+
+name: default
+config: {}
+devices:
+  eth0:
+    nictype: bridged
+    parent: br0   # it is lxcbr0 by default
+    type: nic
