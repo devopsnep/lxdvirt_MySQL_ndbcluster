@@ -80,3 +80,16 @@ Check connections in Management NODE:-
     # shutdown and restart mysql cluster and reload config.ini
     ndb_mgm -e "shutdown"
     ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
+
+    # on Data NODEs run "ndbd"
+    [root@el2 ~]# ndbd
+    2016-02-01 05:18:41 [ndbd] INFO     -- Angel connected to '192.168.230.133:1186'
+    2016-02-01 05:18:41 [ndbd] INFO     -- Angel allocated nodeid: 2
+    
+   # On Sql NODE restart mysql
+    mysqladmin shutdown
+    mysqld_safe &
+
+
+    
+
