@@ -35,3 +35,10 @@ yum install libaio numactl -y
 # References
 https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
 https://roots.io/linux-containers-lxd-as-an-alternative-to-virtualbox-for-wordpress-development/
+
+http://www.tokiwinter.com/mysql-cluster-adding-new-data-nodes-online/
+https://www.esecuredata.com/install-mysql-cluster-7-3-on-centos-6/
+http://letstuxtogether.blogspot.com/2015/03/mysql-cluster-setup-on-centos-6x.html
+http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#Management_Nodes_ndb_mgmd
+
+https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
