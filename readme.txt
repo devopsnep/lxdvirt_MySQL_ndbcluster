@@ -19,6 +19,16 @@ apt-get install lxd
 # Start a local container called “ubuntu-32″ from the ubuntu/trusty/i386 image
 
 	lxc launch images:ubuntu/trusty/i386 ubuntu-32
+
+# Run command in container from host
+
+lxc exec el2 -- ping google.com
+lxc exec el2 -- apt-get update
+
+# install numactl and libaio on centos containers
+
+yum install libaio numactl -y
+
 # References
 https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
 https://roots.io/linux-containers-lxd-as-an-alternative-to-virtualbox-for-wordpress-development/
