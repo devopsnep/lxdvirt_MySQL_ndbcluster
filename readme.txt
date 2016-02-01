@@ -76,4 +76,4 @@ Check connections in Management NODE:-
 
     netstat -ntp | awk '{ print $5; }' | cut -d':' -f1 | sed '/^[a-zA-Z]/d' | sort | uniq
     
-    
+    ndb_mgmd --help    # view config dir here
