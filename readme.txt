@@ -77,3 +77,6 @@ Check connections in Management NODE:-
     netstat -ntp | awk '{ print $5; }' | cut -d':' -f1 | sed '/^[a-zA-Z]/d' | sort | uniq
     
     ndb_mgmd --help    # view config dir here
+    # shutdown and restart mysql cluster and reload config.ini
+    ndb_mgm -e "shutdown"
+    ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
