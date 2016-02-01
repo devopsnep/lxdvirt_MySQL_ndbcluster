@@ -43,3 +43,9 @@ http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#M
 
 https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
 http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
+
+To cluster mysql userinformation and privileges:-(On Centos 6.7)
+login to the SQL Node , also makesure the other sql nodes are also up
+go to myql command line> and enter below commands
+source /usr/share/mysql/ndb_dist_priv.sql;
+call mysql.mysql_cluster_move_privileges();
