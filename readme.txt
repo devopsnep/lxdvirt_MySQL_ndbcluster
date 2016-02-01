@@ -88,7 +88,7 @@ Check connections in Management NODE:-
     
    # On Sql NODE restart mysql
     mysqladmin shutdown
-    mysqld_safe &
+    service mysql start OR  mysqld_safe &
 
 
     
