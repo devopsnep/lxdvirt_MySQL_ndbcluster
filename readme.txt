@@ -42,3 +42,4 @@ http://letstuxtogether.blogspot.com/2015/03/mysql-cluster-setup-on-centos-6x.htm
 http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#Management_Nodes_ndb_mgmd
 
 https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
+http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
