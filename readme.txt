@@ -29,6 +29,9 @@ lxc exec el2 -- apt-get update
 
 yum install libaio numactl -y
 
+# first run generatevm-name.sh  script to get containers list 
+
+
 # References
 https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
 https://roots.io/linux-containers-lxd-as-an-alternative-to-virtualbox-for-wordpress-development/
