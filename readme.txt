@@ -14,20 +14,20 @@ apt-get install lxd
 
 # List images on added remote LXD server.
 
-	lxc image list images:
+    lxc image list images:
 
 # Start a local container called “ubuntu-32″ from the ubuntu/trusty/i386 image
 
-	lxc launch images:ubuntu/trusty/i386 ubuntu-32
+    lxc launch images:ubuntu/trusty/i386 ubuntu-32
 
 # Run command in container from host
 
-lxc exec el2 -- ping google.com
-lxc exec el2 -- apt-get update
+    lxc exec el2 -- ping google.com
+    lxc exec el2 -- apt-get update
 
 # install numactl and libaio on centos containers
 
-yum install libaio numactl -y
+    yum install libaio numactl -y
 
 # first run generatevm-name.sh  script to get containers list 
 
@@ -46,8 +46,16 @@ http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
 
 # To cluster mysql user login information and privileges:-(On Centos 6.7)
 login to the SQL Node , also makesure the other sql nodes are also up
-go to myql command line> and enter below commands
-source /usr/share/mysql/ndb_dist_priv.sql;
-call mysql.mysql_cluster_move_privileges();
 
-flush privileges;  #on all SQL Nodes
+Go to myql command line> and enter below commands
+    
+    source /usr/share/mysql/ndb_dist_priv.sql;
+    call mysql.mysql_cluster_move_privileges();
+
+    flush privileges;  #on all SQL Nodes
+
+Check connections in Management NODE:-
+
+    netstat -ntp | awk '{ print $5; }' | cut -d':' -f1 | sed '/^[a-zA-Z]/d' | sort | uniq
+    
+    
