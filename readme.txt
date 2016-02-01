@@ -31,6 +31,24 @@ apt-get install lxd
 
 # first run generatevm-name.sh  script to get containers list 
 
+# Backing up mysql cluster
+    
+    Data and meta data which is held by data nodes of a live NDB cluster can be saved using the native backup functionality of NDB. This is a strict and simple method, that can be initiated from any member of the cluster with the management client.
+/usr/bin/ndb_mgm -e "START BACKUP <id>"
+
+where ‘id’ is an integer that identifies the snapshot to be created – it has to be specified on non-interactive runs with the -e parameter.
+
+When this command is issued, every ndbd daemon on the data nodes creates a snapshot of its locally stored database segment. The snapshot is stored in the local file system, under the backup directory path configured on the management node (the default path is /usr/local/mysql/data/BACKUP). For every snapshot a directory is created to contain its binary dump files with the name ‘BACKUP-‘.
+
+A cron job can be defined on e.g. the management node based on the above command to generate regular snapshots.
+    
+    01 00 * * * root /bin/bash -c "/usr/bin/ndb_mgm -e \"START BACKUP `date +\%s`\""
+    OR
+    01 01 * * * root /bin/bash -c "/usr/bin/ndb_mgm -e \"START BACKUP `date +\%F`\""
+
+
+    
+
 
 # References
 https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
