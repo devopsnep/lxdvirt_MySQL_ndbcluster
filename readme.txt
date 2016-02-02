@@ -62,6 +62,11 @@ http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#M
 https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
 http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
 
+
+# Start management node
+
+ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
+
 # To cluster mysql user login information and privileges:-(On Centos 6.7)
 login to the SQL Node , also makesure the other sql nodes are also up
 
