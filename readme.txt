@@ -95,8 +95,9 @@ Check connections in Management NODE:-
     mysqladmin shutdown
     service mysql start OR  mysqld_safe &
 
+    ndb_config -q MaxNoOfAttributes
 
-ndb_config -q MaxNoOfAttributes
+#http://johanandersson.blogspot.com/2008/04/great-configini.html
 
     
 
