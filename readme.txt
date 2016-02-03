@@ -96,5 +96,7 @@ Check connections in Management NODE:-
     service mysql start OR  mysqld_safe &
 
 
+ndb_config -q MaxNoOfAttributes
+
     
 
