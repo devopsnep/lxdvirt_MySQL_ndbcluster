@@ -28,6 +28,7 @@ apt-get install lxd
 # install numactl and libaio on centos containers
 
     yum install libaio numactl -y
+    yum install perl-ClassMethodMaker     #needed for running perl scripts provided by mysqlcluster
 
 # first run generatevm-name.sh  script to get containers list 
 
