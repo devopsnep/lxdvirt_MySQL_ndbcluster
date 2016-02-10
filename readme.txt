@@ -103,3 +103,49 @@ Check connections in Management NODE:-
 
     
 
+# Backup and restore of mysqlcluster :-
+1.1 Backup
+Goto-> Management Node :- 
+    ndb_mgm -e "start backup `date +%s`"
+
+Backup files will be stored in "Data Nodes" on same location ..like here /var/lib/mycluster-data/BACKUP/BACKUP-<TimeStamp>
+For example on Node1 - /var/lib/mycluster-data/BACKUP/BACKUP-1455097196 directory.
+
+ls  /var/lib/mycluster-data/BACKUP/BACKUP-1455097196/
+  BACKUP-1455097196-0.2.Data  
+  BACKUP-1455097196.2.ctl  
+  BACKUP-1455097196.2.log
+    BACKUP-1455097196-0.2.Data = table records, which are saved on a per-fragment basis 
+    BACKUP-1455097196.2.ctl  = control information and metadata file. This file is different on different nodes
+    BACKUP-1455097196.2.log = records of committed transactions. Only transactions on tables stored in the backup are stored in the log. Nodes involved in the backup save different records because different nodes host different database fragments. 
+
+Restoring the backup
+====================
+Shutdown cluster with 
+
+ndb_mgm -e "shutdown"
+
+Now stop the SQL nodes-
+<On SQL node>
+    #service mysql stop   OR
+    #mysqladmin shutdown
+    check if any mysql services are still running
+    
+<On management node>
+Start management node
+     #ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
+     #ndb_mgm -e "<sqlnode id>  stop"
+     eg. ndb_mgm -e "4 stop"
+         ndb_mgm -e "5 stop"
+         
+<On Datanode>
+Start with --initial option like below
+    #ndbd --initial
+    
+ndb_restore -m -b 101 -n 2 -r /var/lib/mycluster-data/BACKUP/BACKUP-101/
+     -b = backup number
+     -n = node number/id
+     -m = Restore metadata to NDB Cluster using the NDB API
+     -r = Restore table data and logs into NDB Cluster using the NDB API
+
+
