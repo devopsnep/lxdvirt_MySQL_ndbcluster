@@ -149,3 +149,13 @@ ndb_restore -m -b 101 -n 2 -r /var/lib/mycluster-data/BACKUP/BACKUP-101/
      -r = Restore table data and logs into NDB Cluster using the NDB API
 
 
+##### Basic sql to find  database and table size ####
+Find all table sizes:-
+======================
+SELECT TABLE_NAME AS "Table",round(((data_length + index_length) / 1024 / 1024), 2) AS Size_in_MB FROM information_schema.TABLES  WHERE table_schema = 'ctdb' ORDER BY Size_in_MB DESC;
+
+Find database size example ctdb:-
+================================
+SELECT table_schema  "ctdb", Round(Sum(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" 
+FROM   information_schema.tables 
+GROUP  BY table_schema; 
