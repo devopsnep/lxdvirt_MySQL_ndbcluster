@@ -1,0 +1,8 @@
+[mysqld]
+ndbcluster
+default-storage-engine=NDBCLUSTER
+net_read_timeout=60000
+connect_timeout=60000
+max_allowed_packet=32M
+[mysql_cluster]
+ndb-connectstring=100.126.1.101
