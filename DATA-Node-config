@@ -1,0 +1,6 @@
+[mysqld]
+ndbcluster
+ndb-connectstring=100.126.1.101
+
+[mysql_cluster]
+ndb-connectstring=100.126.1.101
