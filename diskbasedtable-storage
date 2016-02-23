@@ -1,0 +1,6 @@
+on sql node
+
+mysql> CREATE LOGFILE GROUP ct_portal_log ADD UNDOFILE 'ct_portal_undo.dat' INITIAL_SIZE=15360M ENGINE=NDBCLUSTER;
+Query OK, 0 rows affected (1 min 6.10 sec)
+
+mysql> create tablespace ct_portal_ts add datafile 'ct_portal.dat' use logfile group ct_portal_log initial_size=20480M ENGINE=NDBCLUSTER;
