@@ -4,5 +4,14 @@ default-storage-engine=NDBCLUSTER
 net_read_timeout=60000
 connect_timeout=60000
 max_allowed_packet=32M
+max_connections=1000
+query_cache_type=1
+query_cache_size=37748736
+query_cache_limit=2097152
+ndb-cluster-connection-pool=2
+slow-query-log=1
+slow-query-log-file=/var/log/mysql/slowquery.log
+long-query_time=2
+log-queries-not-using-indexes
 [mysql_cluster]
 ndb-connectstring=100.126.1.101
