@@ -24,7 +24,10 @@ apt-get install lxd
 
     lxc exec el2 -- ping google.com
     lxc exec el2 -- apt-get update
-
+    
+# location of lxc containers
+    ls /var/lib/lxd/containers/
+       db2-datanode  db2-sqlnode  lxc-monitord.log  mgmt1
 # install numactl and libaio on centos containers
 
     yum install libaio numactl -y
