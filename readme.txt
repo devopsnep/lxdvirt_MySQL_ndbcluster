@@ -56,6 +56,7 @@ A cron job can be defined on e.g. the management node based on the above command
 
 
 # References
+https://www.stgraber.org/2016/03/19/lxd-2-0-your-first-lxd-container-312/
 https://github.com/lxc/lxd/blob/master/specs/command-line-user-experience.md
 https://roots.io/linux-containers-lxd-as-an-alternative-to-virtualbox-for-wordpress-development/
 
