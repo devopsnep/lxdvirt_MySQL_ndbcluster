@@ -1,0 +1,22 @@
+cat /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+iface em1 inet manual
+auto br0
+iface br0 inet static
+        address 10.126.1.101
+        netmask 255.255.255.0
+        network 10.126.1.0
+        broadcast 100.126.1.255
+        gateway 100.126.1.1
+        bridge-ifaces em1
+        bridge-ports em1
+        up ifconfig em1 up
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+        up route add -net 209.54.66.0/26 gw 209.54.66.1 dev br0
+        
+        
