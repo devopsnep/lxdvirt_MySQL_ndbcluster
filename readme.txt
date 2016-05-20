@@ -37,6 +37,7 @@ apt-get install lxd
 # first run generatevm-name.sh  script to get containers list 
 
 # Backing up mysql cluster
+====================================
     
     Data and meta data which is held by data nodes of a live NDB cluster can be saved using the native backup functionality of NDB. This is a strict and simple method, that can be initiated from any member of the cluster with the management client.
 /usr/bin/ndb_mgm -e "START BACKUP <id>"
@@ -69,9 +70,9 @@ https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
 http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
 https://www.percona.com/blog/2015/01/02/the-mysql-query-cache-how-it-works-and-workload-impacts-both-good-and-bad/
 
-
-# Start management node
-
+===========================
+ Start management node
+===========================
 ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
 
 # To cluster mysql user login information and privileges:-(On Centos 6.7)
@@ -89,8 +90,11 @@ Check connections in Management NODE:-
     netstat -ntp | awk '{ print $5; }' | cut -d':' -f1 | sed '/^[a-zA-Z]/d' | sort | uniq
     
     ndb_mgmd --help    # view config dir here
+    
     # shutdown and restart mysql cluster and reload config.ini
+    
     ndb_mgm -e "shutdown"
+    
     ndb_mgmd --config-file /root/config.ini  --config-dir /usr/mysql-cluster --initial
 
     # on Data NODEs run "ndbd"
@@ -107,8 +111,9 @@ Check connections in Management NODE:-
 #http://johanandersson.blogspot.com/2008/04/great-configini.html
 
     
-
+=======================================
 # Backup and restore of mysqlcluster :-
+=======================================
 1.1 Backup
 Goto-> Management Node :- 
     ndb_mgm -e "start backup `date +%s`"
