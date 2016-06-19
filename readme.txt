@@ -1,7 +1,7 @@
 add-apt-repository ppa:ubuntu-lxc/lxd-stable
 apt-get update
 apt-get dist-upgrade
-apt-get install lxd
+apt-get install lxd lxd-client
 
 # Logout and login from shell
 # Add public LXD server at https://images.linuxcontainers.org:8443
