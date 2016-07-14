@@ -45,3 +45,53 @@ $IPT -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 $IPT -P INPUT DROP
 $IPT -P OUTPUT DROP
 $IPT -P FORWARD DROP
+
+
+##################### for mysql node
+
+#!/bin/bash
+
+IPT="/sbin/iptables"
+
+## Flush and reset counters
+$IPT -F
+$IPT -X
+$IPT -Z
+
+## Loopback
+$IPT -A INPUT -i lo -j ACCEPT
+$IPT -A OUTPUT -o lo -j ACCEPT
+
+## Accept ICMP Ping echo requests
+$IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+
+## Allow SSH (77022) from 77.236.215.20 only
+$IPT -A INPUT -s 77.236.215.20 -p tcp -m tcp --syn --dport 77022 -j ACCEPT
+$IPT -A INPUT -s 77.236.213.257 -p tcp -m tcp --syn --dport 77022 -j ACCEPT
+$IPT -A INPUT -s 77.236.215.273 -p tcp -m tcp --syn --dport 77022 -j ACCEPT
+$IPT -A INPUT -s 202.77.66.0/27 -p tcp -m tcp --syn --dport 77022 -j ACCEPT
+
+##NRPE
+$IPT -A INPUT -s 202.77.66.0/26 -p tcp -m tcp --syn --dport 5666 -j ACCEPT
+
+##NRPE
+$IPT -A INPUT -s 202.77.66.0/26 -p tcp -m tcp --syn --dport 3306 -j ACCEPT
+$IPT -A INPUT -s 77.236.215.20 -p tcp -m tcp --syn --dport 3306 -j ACCEPT
+## SNMP
+$IPT -A INPUT -s 202.77.66.0/26 -p udp --dport 161 -j ACCEPT
+
+## Allow inbound established and related outside communication
+$IPT -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+## Drop outside initiated connections
+$IPT -A INPUT -m state --state NEW -j REJECT
+
+## Allow all outbound tcp, udp, icmp traffic with state
+$IPT -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
+$IPT -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
+$IPT -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+
+## Chains
+$IPT -P INPUT DROP
+$IPT -P OUTPUT DROP
+$IPT -P FORWARD DROP
