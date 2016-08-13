@@ -63,6 +63,7 @@ https://roots.io/linux-containers-lxd-as-an-alternative-to-virtualbox-for-wordpr
 
 http://www.tokiwinter.com/mysql-cluster-adding-new-data-nodes-online/
 https://www.esecuredata.com/install-mysql-cluster-7-3-on-centos-6/
+https://helpdesk.esecuredata.com/index.php?/Knowledgebase/Article/View/112/0/install-mysql-cluster-7-3-on-centos-6
 http://letstuxtogether.blogspot.com/2015/03/mysql-cluster-setup-on-centos-6x.html
 http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#Management_Nodes_ndb_mgmd
 
