@@ -70,6 +70,7 @@ http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#M
 https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
 http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
 https://www.percona.com/blog/2015/01/02/the-mysql-query-cache-how-it-works-and-workload-impacts-both-good-and-bad/
+https://www.ctl.io/developers/blog/post/linux-lxd-hypervisor-containers
 
 ===========================
  Start management node
