@@ -52,7 +52,17 @@ A cron job can be defined on e.g. the management node based on the above command
     OR
     01 01 * * * root /bin/bash -c "/usr/bin/ndb_mgm -e \"START BACKUP `date +\%F`\""
 
-
+mysql> select * from ndbinfo.memoryusage;
++---------+---------------------+-------------+------------+-------------+-------------+
+| node_id | memory_type         | used        | used_pages | total       | total_pages |
++---------+---------------------+-------------+------------+-------------+-------------+
+|       3 | Data memory         | 18191712256 |     555167 | 85899345920 |     2621440 |
+|       3 | Index memory        |   652902400 |      79700 |  8590196736 |     1048608 |
+|       3 | Long message buffer |       62976 |        246 |    67108864 |      262144 |
+|       4 | Data memory         | 16993714176 |     518607 | 85899345920 |     2621440 |
+|       4 | Index memory        |   651378688 |      79514 |  8590196736 |     1048608 |
+|       4 | Long message buffer |       52992 |        207 |    67108864 |      262144 |
++---------+---------------------+-------------+------------+-------------+-------------+
     
 
 
@@ -66,6 +76,8 @@ https://www.esecuredata.com/install-mysql-cluster-7-3-on-centos-6/
 https://helpdesk.esecuredata.com/index.php?/Knowledgebase/Article/View/112/0/install-mysql-cluster-7-3-on-centos-6
 http://letstuxtogether.blogspot.com/2015/03/mysql-cluster-setup-on-centos-6x.html
 http://skillachie.com/2014/06/30/mysql-cluster-getting-started-redhatcentos-6/#Management_Nodes_ndb_mgmd
+
+
 
 https://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-config-starting.html
 http://johanandersson.blogspot.com/2012/12/recommended-mysql-cluster-setup.html
